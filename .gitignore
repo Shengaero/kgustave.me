@@ -1,0 +1,15 @@
+### Configurations ###
+!.gitignore
+!.editorconfig
+/.idea/
+*.iml
+
+### Node JS ###
+!package-lock.json
+!package.json
+/node_modules/
+
+### Build Outputs ###
+/src/scss/*.css
+/build/
+/out/

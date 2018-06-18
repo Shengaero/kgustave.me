@@ -1,0 +1,104 @@
+/*!
+ * Copyright 2018 Kaidan Gustave
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+@import "C:/Users/Kaidan/Documents/kgustave.me/node_modules/bootstrap/scss/functions";
+@import "C:/Users/Kaidan/Documents/kgustave.me/node_modules/bootstrap/scss/mixins";
+@import "C:/Users/Kaidan/Documents/kgustave.me/node_modules/bootstrap/scss/variables";
+
+@import "C:/Users/Kaidan/Documents/kgustave.me/node_modules/bootstrap/scss/navbar";
+@import "C:/Users/Kaidan/Documents/kgustave.me/node_modules/bootstrap/scss/nav";
+@import "C:/Users/Kaidan/Documents/kgustave.me/node_modules/bootstrap/scss/dropdown";
+
+@import "C:/Users/Kaidan/Documents/kgustave.me/node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+
+@import "theme";
+@import "mixins";
+
+////////////
+// NAVBAR //
+////////////
+
+.navbar-light {
+  .navbar {
+    background-color: primary-color();
+  }
+
+  .navbar-brand {
+    font-size: 25px;
+    color: text-color();
+  }
+
+  .navbar-nav .nav-link {
+    color: transparentize(text-color(), .25);
+  }
+
+  .navbar-nav .nav-link:hover,
+  .navbar-nav .nav-link:focus {
+    color: text-color();
+  }
+}
+
+//////////
+// PAGE //
+//////////
+
+.page-title {
+  background-color: lighten(primary-color(), 10%);
+
+  header {
+    color: text-color();
+    width: 90%;
+    text-align: center;
+    padding: 70px 20px;
+    margin: {
+      left: auto;
+      right: auto;
+    }
+  }
+
+  .page-name {
+    @include fade-in(1s);
+    font-size: 400%;
+  }
+}
+
+.code-block {
+  text-align: left;
+  margin: {
+    left: 15%;
+    right: 40%;
+  }
+}
+
+.code-block-container {
+  padding: 5px;
+}
+
+////////////
+// FOOTER //
+////////////
+
+.site-footer {
+  background-color: black;
+  footer {
+    a {
+      color: text-color('light');
+    }
+    padding: {
+      top: 10px;
+      bottom: 30px;
+    }
+  }
+}

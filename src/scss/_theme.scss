@@ -1,0 +1,65 @@
+/*!
+ * Copyright 2018 Kaidan Gustave
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+@import "C:/Users/Kaidan/Documents/kgustave.me/node_modules/bootstrap/scss/functions";
+@import "C:/Users/Kaidan/Documents/kgustave.me/node_modules/bootstrap/scss/mixins";
+@import "C:/Users/Kaidan/Documents/kgustave.me/node_modules/bootstrap/scss/variables";
+
+$fa-font-path: "C:/Users/Kaidan/Documents/kgustave.me/node_modules/@fortawesome/fontawesome-free/webfonts";
+
+@import "C:/Users/Kaidan/Documents/kgustave.me/node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+@import "C:/Users/Kaidan/Documents/kgustave.me/node_modules/@fortawesome/fontawesome-free/scss/fa-solid";
+
+/////////////////////////
+// THEME CUSTOMIZATION //
+/////////////////////////
+
+$primary-key: "primary";
+$secondary-key: "secondary";
+$highlight-key: "highlight";
+$light-text-color: "light-text";
+$dark-text-color: "dark-text";
+$theme-colors: (
+        $primary-key: #FFA07A,
+        $secondary-key: #d3743e,
+        $highlight-key: #7898cc,
+        $dark-text-color: #525252,
+        $light-text-color: #d0d0d0
+);
+
+@function primary-color() {
+  @return theme-color($primary-key)
+}
+@function theme-color($key) {
+  @return map_get($theme-colors, $key);
+}
+@function highlight-color() {
+  @return theme-color($highlight-key)
+}
+@function secondary-color() {
+  @return theme-color($secondary-key)
+}
+@function text-color($type: 'dark') {
+  @return theme-color($type + '-text')
+}
+
+:root {
+  background-color: primary-color();
+}
+
+#root {
+  background-color: primary-color();
+  text-align: center;
+}

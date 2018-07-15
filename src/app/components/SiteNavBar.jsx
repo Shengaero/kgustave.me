@@ -88,7 +88,7 @@ export default class SiteNavBar extends Component {
             </DropdownMenu>
           </UncontrolledDropdown>
           <NavItem>
-            <NavLink href="https://github.com/TheMonitorLizard/">
+            <NavLink href="https://github.com/Shengaero/">
               GitHub <b className="fab fa-github"/>
             </NavLink>
           </NavItem>

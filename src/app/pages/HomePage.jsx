@@ -45,7 +45,7 @@ export default function HomePage() {
       <header>
         <h1 className="page-name">Kaidan Gustave</h1>
         <MediaButton color={'#000000'} type="GitHub"
-                     href="https://github.com/TheMonitorLizard"/>
+                     href="https://github.com/Shengaero"/>
         <MediaButton color={'#7289DA'} type="Discord"
                      href="https://discordapp.com/invite/xkkw54u"/>
         <MediaButton color={'#0077B5'} type="LinkedIn"

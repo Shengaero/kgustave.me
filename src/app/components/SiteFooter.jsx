@@ -22,7 +22,7 @@ export default function SiteFooter() {
   return <div className="site-footer">
     <footer>
       <b>
-        <a href="https://github.com/TheMonitorLizard/kgustave.me/blob/master/LICENSE">
+        <a href="https://github.com/Shengaero/kgustave.me/blob/master/LICENSE">
           <b className="fas fa-copyright"/> {year} Kaidan Gustave
         </a>
       </b>

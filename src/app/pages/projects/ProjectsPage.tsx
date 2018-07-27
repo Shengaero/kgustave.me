@@ -13,9 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React, { Component } from 'react';
-import { Redirect, Route, Switch } from "react-router";
-import KotlinJSONProjectPage from "./KotlinJSONProjectPage";
+import * as React from 'react';
+import { Component } from 'react'
+import { Redirect, Route, Switch } from 'react-router';
+import KotlinJSONProjectPage from './KotlinJSONProjectPage';
 import Helmet from 'react-helmet';
 
 export default class ProjectsPage extends Component {

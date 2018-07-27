@@ -13,20 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { Redirect, Route, Switch } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import '../js/configureHLJS';
-import registerServiceWorker, { unregister } from '../js/registerServiceWorker';
 import SiteFooter from './components/SiteFooter';
 import SiteNavBar from './components/SiteNavBar';
 import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
 import ProjectsPage from './pages/projects/ProjectsPage';
+import {
+  register as registerServiceWorker,
+  unregister as unregisterServiceWorker
+} from '../js/registerServiceWorker';
 
-export const mediaLinks = {
+export const mediaLinks: any = {
   github: "https://github.com/Shengaero",
   discord: "https://discordapp.com/invite/xkkw54u",
   linkedin: "https://www.linkedin.com/in/kaidan-gustave-905257165",
@@ -37,7 +40,7 @@ export const mediaLinks = {
 function App() {
   return <div className="app">
     <Helmet defaultTitle="Kaidan Gustave"/>
-    <SiteNavBar/>
+    <SiteNavBar tooltip={{show: 1000, hide: 0}}/>
     <BrowserRouter>
       <Switch>
         {/* Redirect from no-path to "/home" */}
@@ -48,7 +51,7 @@ function App() {
         <Route exact path="/404" component={NotFoundPage}/>
 
         {Object.keys(mediaLinks).map((key) => {
-          return <Route key={key} exact path={'/' + key} component={() => {
+          return <Route key={key} exact path={'/' + key} component={(): any => {
             window.location = mediaLinks[key];
             return null;
           }}/>
@@ -66,6 +69,6 @@ export default function launchApp() {
   ReactDOM.render(<App/>, document.getElementById('root'));
   registerServiceWorker();
   window.addEventListener('unload', function() {
-    unregister();
+    unregisterServiceWorker();
   });
-};
+}

@@ -20,21 +20,21 @@
 const initialObject = 'JSObject {';
 const initialArray = 'JSArray(';
 
-const isArrayType = (value) => value.constructor === Array;
+const isArrayType = (value: any) => value.constructor === Array;
 
-function isValidBottomType(object) {
+function isValidBottomType(object: any) {
   const objType = typeof object;
   return object === null || objType === typeof 'string' || objType === typeof true || objType === typeof 0;
 }
 
-function indentOf(factor, indent) {
+function indentOf(factor: number, indent: number) {
   if(indent === 0) {
     return '';
   }
   return '\n' + ''.padEnd(factor * indent, ' ');
 }
 
-export function renderValue(value, indent = 4, level = 0) {
+export function renderValue(value: any, indent = 4, level = 0) {
   if(value !== null) {
     if(isArrayType(value)) {
       return renderJSArray(value, indent, level + 1);
@@ -46,7 +46,7 @@ export function renderValue(value, indent = 4, level = 0) {
   return 'null';
 }
 
-export function renderJSArray(array, indent = 4, level = 0) {
+export function renderJSArray(array: Array<any>, indent = 4, level = 0) {
   if(isValidBottomType(array)) {
     return array;
   }
@@ -66,10 +66,10 @@ export function renderJSArray(array, indent = 4, level = 0) {
       result = result + value;
     }
   }
-  return result === initialArray? result + ')' : result + indentOf(level, indent) + ')';
+  return result === initialArray ? result + ')' : result + indentOf(level, indent) + ')';
 }
 
-export function renderJSObject(object, indent = 4, level = 0) {
+export function renderJSObject(object: any, indent = 4, level = 0) {
   if(isValidBottomType(object)) {
     return object;
   }
@@ -85,10 +85,10 @@ export function renderJSObject(object, indent = 4, level = 0) {
       result = `${result}${indentOf(level + 1, indent)}"${key}" to ${value}`;
     }
   }
-  return result === initialObject? result + ' }' : result + indentOf(level, indent) + '}';
+  return result === initialObject ? result + ' }' : result + indentOf(level, indent) + '}';
 }
 
-export default function renderJson(indent, value) {
+export default function renderJson(indent: number, value: any) {
   if(isArrayType(value)) {
     return renderJSArray(value, indent);
   } else if(typeof value === typeof {}) {

@@ -13,7 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React, { Component } from 'react';
+import * as React from 'react';
+import { Component } from 'react';
 import {
   Collapse,
   DropdownItem,
@@ -30,14 +31,27 @@ import {
 } from 'reactstrap';
 import '../../scss/app.css';
 
-const navTooltipDelay = { show: 1000, hide: 0 };
+export interface SiteNavBarProps {
+  tooltip: {
+    show: number;
+    hide: number;
+  };
+}
 
-export default class SiteNavBar extends Component {
-  constructor(props) {
+export interface SiteNavBarState {
+  collapsed: boolean;
+  tooltipVisible: boolean;
+}
+
+export default class SiteNavBar extends Component<SiteNavBarProps, SiteNavBarState> {
+  constructor(props: SiteNavBarProps) {
     super(props);
-    this.state = { collapsed: false, tooltipVisible: false };
     this.toggleCollapse = this.toggleCollapse.bind(this);
     this.toggleTooltip = this.toggleTooltip.bind(this);
+    this.state = {
+      collapsed: false,
+      tooltipVisible: false
+    };
   }
 
   toggleCollapse() {
@@ -62,8 +76,8 @@ export default class SiteNavBar extends Component {
     return <Navbar id="NavBar" light color="faded" expand="md">
       <NavbarToggler id="NavbarToggler" onClick={this.toggleCollapse}/>
       <Tooltip placement="right" target="NavbarToggler" isOpen={this.state.tooltipVisible}
-               toggle={this.toggleTooltip} delay={navTooltipDelay}>
-        {this.state.collapsed? 'Collapse' : 'Expand'}
+               toggle={this.toggleTooltip} delay={this.props.tooltip}>
+        {this.state.collapsed ? 'Collapse' : 'Expand'}
       </Tooltip>
       <NavbarBrand href="/home">Kaidan Gustave</NavbarBrand>
       <Collapse navbar isOpen={this.state.collapsed}>

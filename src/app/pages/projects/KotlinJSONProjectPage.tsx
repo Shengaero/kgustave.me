@@ -13,8 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React from 'react';
-import renderJson from '../../../js/renderJson';
+import * as React from 'react';
+import renderJson from '../../util/renderJson';
 import JSONLogo from '../../../logo/json-logo.svg';
 import KotlinLogo from '../../../logo/kotlin-logo.svg';
 import '../../../scss/app.css';
@@ -22,9 +22,25 @@ import '../../../scss/kotlin-json-project.css';
 import CodeBlock from '../../components/CodeBlock';
 import Helmet from 'react-helmet';
 
-function JsonExample({ indent = 4, json }) {
+function JsonExample({json, indent = 4}: { json: any, indent?: number }) {
   return <CodeBlock language="kotlin" content={renderJson(indent, json)}/>
 }
+
+const examples = {
+  a: {
+    address: '123 JSON Lane',
+    tenants: [
+      {
+        name: 'Mark',
+        age: 25
+      },
+      {
+        name: 'Helen',
+        age: 23
+      }
+    ]
+  }
+};
 
 export default function KotlinJSONProjectPage() {
   return <div className="page">
@@ -42,21 +58,7 @@ export default function KotlinJSONProjectPage() {
     </div>
     <div>
       <div>
-        <JsonExample json={
-          {
-            address: '123 JSON Lane',
-            tenants: [
-              {
-                name: 'Mark',
-                age: 25
-              },
-              {
-                name: 'Helen',
-                age: 23
-              }
-            ]
-          }
-        }/>
+        <JsonExample json={examples.a}/>
       </div>
     </div>
   </div>;

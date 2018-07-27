@@ -13,19 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React from 'react';
+import * as React from 'react';
 import '../../scss/app.css';
 import '../../scss/home.css';
 import Helmet from 'react-helmet';
 import { Button } from 'reactstrap';
 import { mediaLinks } from '../App';
 
-function MediaButton({ href, color, type }) {
-  return <Button
-    className="btn-lg"
-    style={{ backgroundColor: color, borderWidth: '2px' }}
-    href={href}>
-    <b className={'fab fa-' + type.toLowerCase()}/> {type}
+function MediaButton(props: { color: string | any, href: string, type: string }) {
+  const style = {
+    backgroundColor: props.color,
+    borderWidth: '2px'
+  };
+
+  return <Button className="btn-lg" style={style} href={props.href}>
+    <b className={'fab fa-' + props.type.toLowerCase()}/> {props.type}
   </Button>;
 }
 
@@ -52,13 +54,19 @@ export default function HomePage() {
       <h1>About Me</h1>
       <p className="about-me-content">
         Hello!<br/>
-        My name is Kaidan Gustave. I am a full time student at the College of Lake County in my
-        home town: Grayslake, Illinois. Academically, my studies are geared towards a computer
-        science and/or backend development web-development degree, as programming is one of my
+        My name is Kaidan Gustave. I am a full time student at the College of Lake County
+        in my
+        home town: Grayslake, Illinois. Academically, my studies are geared towards a
+        computer
+        science and/or backend development web-development degree, as programming is one
+        of my
         favorite hobbies.<br/>
-        Proficiency-wise: I am a well versed and adept user of Java and Kotlin, and am acquainted
-        with many other programming languages such as JavaScript, C#, Python, Ruby, and Scala.<br/>
-        Besides programming I am an avid gamer, connoisseur of various types of music, and occasional
+        Proficiency-wise: I am a well versed and adept user of Java and Kotlin, and am
+        acquainted
+        with many other programming languages such as JavaScript, C#, Python, Ruby, and
+        Scala.<br/>
+        Besides programming I am an avid gamer, connoisseur of various types of music, and
+        occasional
         artist.
       </p>
     </div>

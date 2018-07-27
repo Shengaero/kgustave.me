@@ -13,18 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React from 'react';
-import * as hljs from 'highlight.js';
-import 'highlight.js/styles/atelier-lakeside-dark.css';
+import * as React from 'react';
+import '../../scss/app.css';
 
-export default function CodeBlock({ language, content }) {
-  const detected = hljs.getLanguage(language.toLowerCase());
-  if(detected === undefined) {
-    throw new Error(`Cannot find language with name "${language}"!`)
-  }
-  return <pre className="code-block-container">
-    <code className={"code-block " + language.toLowerCase()}>
-      {content}
-    </code>
-  </pre>;
+const year = new Date().getFullYear();
+
+export default function SiteFooter() {
+  return <div className="site-footer">
+    <footer>
+      <b>
+        <a href="https://github.com/Shengaero/kgustave.me/blob/master/LICENSE">
+          <b className="fas fa-copyright"/> {year} Kaidan Gustave
+        </a>
+      </b>
+    </footer>
+  </div>;
 }

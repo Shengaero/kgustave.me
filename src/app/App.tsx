@@ -37,8 +37,6 @@ export const mediaLinks: any = {
   twitter: "https://twitter.com/Shengaero"
 };
 
-console.info('test');
-
 function App() {
   return <div className="app">
     <Helmet defaultTitle="Kaidan Gustave"/>

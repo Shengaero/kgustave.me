@@ -14,12 +14,29 @@
  * limitations under the License.
  */
 import React, { Component } from 'react';
-import SiteHead from '../../components/SiteHead';
+import { Redirect, Route, Switch } from "react-router";
+import KotlinJSONProjectPage from "./KotlinJSONProjectPage";
+import Helmet from 'react-helmet';
 
 export default class ProjectsPage extends Component {
   render() {
-    return [
-      <SiteHead key="SiteHead" title="Projects" description="Various projects I have contributed to"/>
-    ];
+    return <Switch>
+      {/* Main Projects Page */}
+      <Route exact path="/projects">
+        {/* TODO Projects page */}
+        <div className="page">
+          <Helmet>
+            <title>Projects</title>
+            <meta name="og:title" content="Projects"/>
+          </Helmet>
+        </div>
+      </Route>
+
+      {/* Kotlin JSON Project Page */}
+      <Route exact path="/projects/json" component={KotlinJSONProjectPage}/>
+
+      {/* Redirect from non-registered "/projects/<sub-route>" to "/404" */}
+      <Redirect from="/projects/**" to="/404"/>
+    </Switch>;
   }
 }

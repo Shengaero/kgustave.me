@@ -59,7 +59,7 @@ export default class SiteNavBar extends Component {
   }
 
   render() {
-    return <Navbar light color="faded" expand="md">
+    return <Navbar id="NavBar" light color="faded" expand="md">
       <NavbarToggler id="NavbarToggler" onClick={this.toggleCollapse}/>
       <Tooltip placement="right" target="NavbarToggler" isOpen={this.state.tooltipVisible}
                toggle={this.toggleTooltip} delay={navTooltipDelay}>

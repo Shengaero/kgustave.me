@@ -20,12 +20,17 @@ import KotlinLogo from '../../../logo/kotlin-logo.svg';
 import '../../../scss/app.css';
 import '../../../scss/kotlin-json-project.css';
 import CodeBlock from '../../components/CodeBlock';
-import SiteHead from '../../components/SiteHead';
+import Helmet from 'react-helmet';
+
+function JsonExample({ indent = 4, json }) {
+  return <CodeBlock language="kotlin" content={renderJson(indent, json)}/>
+}
 
 export default function KotlinJSONProjectPage() {
-  return [
-    <SiteHead key="SiteHead" title="Kotlin JSON" description="A stylistic JSON library for Kotlin JVM"/>,
-    <div key="PageTitle" className="page-title">
+  return <div className="page">
+    <Helmet>
+    </Helmet>
+    <div className="page-title">
       <header>
         <h1 className="page-name">Kotlin JSON</h1>
         <h1 className="kotlin-json-visual">
@@ -34,11 +39,11 @@ export default function KotlinJSONProjectPage() {
           <img className="json-logo" src={JSONLogo} alt="JSON"/>
         </h1>
       </header>
-    </div>,
-    <div key="PageContent">
+    </div>
+    <div>
       <div>
-        <CodeBlock language="kotlin" content={
-          renderJson(4, {
+        <JsonExample json={
+          {
             address: '123 JSON Lane',
             tenants: [
               {
@@ -50,9 +55,9 @@ export default function KotlinJSONProjectPage() {
                 age: 23
               }
             ]
-          })
+          }
         }/>
       </div>
     </div>
-  ];
+  </div>;
 }

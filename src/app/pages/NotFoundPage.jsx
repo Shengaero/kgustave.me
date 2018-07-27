@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 import React from 'react';
-import Helmet from 'react-helmet';
 import { Link } from 'react-router-dom';
+import Helmet from 'react-helmet';
 
 export default function NotFoundPage() {
-  return [
-    <Helmet key="Helmet">
+  return <div className="page">
+    <Helmet>
       <title>Not Found!</title>
-    </Helmet>,
-    <div className="page-title" key="PageTitle">
+    </Helmet>
+    <div className="page-title">
       <header>
         <h1>Uh Oh!</h1>
         <b>Looks like there's nothing here!</b>
@@ -31,5 +31,5 @@ export default function NotFoundPage() {
         </p>
       </header>
     </div>
-  ];
+  </div>;
 }

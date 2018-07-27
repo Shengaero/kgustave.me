@@ -8,12 +8,14 @@
   "homepage": "http://shengaero.github.io/home",
   "private": true,
   "scripts": {
-    "build-css": "node-sass-chokidar --include-path src/ -o src/",
+    "build-css": "node-sass-chokidar src/ -o src/",
     "build-js": "react-scripts build",
     "build": "npm-run-all build-css build-js",
-    "watch-css": "npm run build-css && node-sass-chokidar --include-path src/ -o src/ --watch --recursive",
+
+    "start-css": "node-sass-chokidar src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
-    "start": "npm-run-all -p watch-css start-js",
+    "start": "npm-run-all -p start-css start-js",
+
     "test": "jest",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",

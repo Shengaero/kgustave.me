@@ -17,36 +17,55 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Redirect, Route, Switch } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
+import Helmet from 'react-helmet';
 import '../js/configureHLJS';
 import registerServiceWorker, { unregister } from '../js/registerServiceWorker';
 import SiteFooter from './components/SiteFooter';
 import SiteNavBar from './components/SiteNavBar';
 import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
-import KotlinJSONProjectPage from './pages/projects/KotlinJSONProjectPage';
 import ProjectsPage from './pages/projects/ProjectsPage';
 
-function App() {
-  return [
-    <SiteNavBar key="NavBar"/>,
-    <BrowserRouter key="Router">
-      <Switch>
-        <Redirect exact from="/" to="/home"/>
-        <Route exact path="/home" component={HomePage}/>
-        <Route exact path="/projects" component={ProjectsPage}/>
-        <Route exact path="/projects/json" component={KotlinJSONProjectPage}/>
+export const mediaLinks = {
+  github: "https://github.com/Shengaero",
+  discord: "https://discordapp.com/invite/xkkw54u",
+  linkedin: "https://www.linkedin.com/in/kaidan-gustave-905257165",
+  patreon: "https://www.patreon.com/shengaero",
+  twitter: "https://twitter.com/Shengaero"
+};
 
-        <Route path="/**" component={NotFoundPage}/>
+function App() {
+  return <div className="app">
+    <Helmet defaultTitle="Kaidan Gustave"/>
+    <SiteNavBar/>
+    <BrowserRouter>
+      <Switch>
+        {/* Redirect from no-path to "/home" */}
+        <Redirect exact from="/" to="/home"/>
+
+        <Route exact path="/home" component={HomePage}/>
+        <Route path="/projects" component={ProjectsPage}/>
+        <Route exact path="/404" component={NotFoundPage}/>
+
+        {Object.keys(mediaLinks).map((key) => {
+          return <Route key={key} exact path={'/' + key} component={() => {
+            window.location = mediaLinks[key];
+            return null;
+          }}/>
+        })}
+
+        {/* Redirect from unknown route to "/404" */}
+        <Redirect from="/**" to="/404"/>
       </Switch>
-    </BrowserRouter>,
-    <SiteFooter key="Footer"/>
-  ];
+    </BrowserRouter>
+    <SiteFooter/>
+  </div>;
 }
 
 export default function launchApp() {
   ReactDOM.render(<App/>, document.getElementById('root'));
   registerServiceWorker();
-  window.addEventListener('close', function() {
+  window.addEventListener('unload', function() {
     unregister();
   });
 };

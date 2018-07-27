@@ -26,6 +26,14 @@
 @import "theme";
 @import "mixins";
 
+/////////
+// APP //
+/////////
+
+.app {
+
+}
+
 ////////////
 // NAVBAR //
 ////////////
@@ -53,6 +61,10 @@
 //////////
 // PAGE //
 //////////
+
+.page {
+
+}
 
 .page-title {
   background-color: lighten(primary-color(), 10%);

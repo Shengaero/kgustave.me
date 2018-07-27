@@ -16,11 +16,38 @@
 import React from 'react';
 import '../../scss/app.css';
 import '../../scss/home.css';
-import MediaButton from '../components/MediaButton';
-import SiteHead from '../components/SiteHead';
+import Helmet from 'react-helmet';
+import { Button } from 'reactstrap';
+import { mediaLinks } from '../App';
 
-function AboutMe() {
-  return <div>
+function MediaButton({ href, color, type }) {
+  return <Button
+    className="btn-lg"
+    style={{ backgroundColor: color, borderWidth: '2px' }}
+    href={href}>
+    <b className={'fab fa-' + type.toLowerCase()}/> {type}
+  </Button>;
+}
+
+export default function HomePage() {
+  return <div className="page">
+    <Helmet>
+      <title>Kaidan Gustave</title>
+      <meta name="og:title" content="Kaidan Gustave"/>
+      <meta name="og:description" content="Kotlin and Java developer."/>
+      {/* TODO og:image */}
+      <meta name="og:url" content={document.location.pathname}/>
+    </Helmet>
+    <div className="page-title">
+      <header>
+        <h1 className="page-name">Kaidan Gustave</h1>
+        <MediaButton color={'#000000'} type="GitHub" href={mediaLinks.github}/>
+        <MediaButton color={'#7289DA'} type="Discord" href={mediaLinks.discord}/>
+        <MediaButton color={'#0077B5'} type="LinkedIn" href={mediaLinks.linkedin}/>
+        <MediaButton color={'#f96854'} type="Patreon" href={mediaLinks.patreon}/>
+        <MediaButton color={'#1da1f2'} type="Twitter" href={mediaLinks.twitter}/>
+      </header>
+    </div>
     <div className="about-me">
       <h1>About Me</h1>
       <p className="about-me-content">
@@ -36,22 +63,4 @@ function AboutMe() {
       </p>
     </div>
   </div>;
-}
-
-export default function HomePage() {
-  return [
-    <SiteHead key="SiteHead" title="Kaidan Gustave" description="Kotlin and Java developer"/>,
-    <div key="PageTitle" className="page-title">
-      <header>
-        <h1 className="page-name">Kaidan Gustave</h1>
-        <MediaButton color={'#000000'} type="GitHub"
-                     href="https://github.com/Shengaero"/>
-        <MediaButton color={'#7289DA'} type="Discord"
-                     href="https://discordapp.com/invite/xkkw54u"/>
-        <MediaButton color={'#0077B5'} type="LinkedIn"
-                     href="https://www.linkedin.com/in/kaidan-gustave-905257165/"/>
-      </header>
-    </div>,
-    <AboutMe key="AboutMe"/>
-  ];
 }

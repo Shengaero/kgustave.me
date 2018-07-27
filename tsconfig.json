@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
-    "rootDir": "./src/",
     "sourceMap": true,
     "noImplicitAny": true,
+    "noImplicitUseStrict": true,
+    "rootDir": "./src/",
     "outDir": "./src/",
     "module": "commonjs",
     "target": "es2017",

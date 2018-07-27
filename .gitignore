@@ -13,3 +13,23 @@
 /src/scss/*.css
 /build/
 /out/
+
+# In order to work with create-react-app, we
+# are required to build each .ts output file
+# alongside the original source file.
+# With this, we need to exclude those outputs
+# somewhat specifically:
+
+/src/**/*.js
+/src/**/*.js.map
+
+# And because some of our source files still
+# might need to be .js files, we need to
+# manually include those in git's scope.
+
+!/src/index.js
+!/src/js/**/*.js
+
+# Exclude some specific definition files
+/src/js/registerServiceWorker.d.ts
+/src/logo/svg.d.ts

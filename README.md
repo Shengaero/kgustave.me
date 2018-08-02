@@ -1,6 +1,6 @@
 # kgustave.me
 
-Dear reader,
+Dear Reader,
 
 This is my website's official source code.
 
@@ -12,8 +12,17 @@ using the following:
 - `typescript`, notably typescript in a `create-react-app` project.
 - `sass`/`scss` along with various `bootstrap` resources.
 
-This website is hosted via gh-pages at https://shengaero.github.io/,
-or https://kgustave.me/
+This website is hosted via gh-pages at https://shengaero.github.io/, or https://kgustave.me/
+
+## Acknowledgements
+
+#### [spa-github-pages](https://github.com/rafrex/spa-github-pages)
+
+Special thanks to [rafrex](https://github.com/rafrex/) for his `spa-github-pages`
+workaround that made sure I could use `BrowserRouter` in a single page react app
+on gh-pages.
+
+~~`HashRouter` is cursed, let it be damned, keep the `#`s out of my URLs!!!~~
 
 Sincerely,<br>
 Kaidan Gustave

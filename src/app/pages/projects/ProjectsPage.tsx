@@ -29,7 +29,7 @@ export default class ProjectsPage extends Component {
         <Page>
           <Helmet>
             <title>Projects</title>
-            <meta name="og:title" content="Projects"/>
+            <meta property="og:title" content="Projects"/>
           </Helmet>
         </Page>
       </Route>

@@ -58,10 +58,10 @@ class HomePage extends React.Component<any, { markdown: string | null }> {
     return <Page>
       <Helmet>
         <title>Kaidan Gustave</title>
-        <meta name="og:title" content="Kaidan Gustave"/>
-        <meta name="og:description" content="Kotlin and Java developer."/>
+        <meta property="og:title" content="Kaidan Gustave"/>
+        <meta property="og:description" content="Kotlin and Java developer."/>
         {/* TODO og:image */}
-        <meta name="og:url" content={document.location.href}/>
+        <meta property="og:url" content={document.location.href}/>
       </Helmet>
 
       <PageTitle>

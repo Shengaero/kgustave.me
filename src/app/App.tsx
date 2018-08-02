@@ -16,7 +16,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Redirect, Route, Switch } from 'react-router';
-import { BrowserRouter } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import '../js/configureHLJS';
 import SiteFooter from './components/SiteFooter';
@@ -27,6 +26,7 @@ import NotFoundPage from './pages/error/NotFoundPage';
 import register, { unregister } from '../js/registerServiceWorker';
 import { ErrorInfo, ReactNodeArray } from 'react';
 import InternalErrorPage from './pages/error/InternalErrorPage';
+import { BrowserRouter } from 'react-router-dom';
 
 export const mediaLinks: any = {
   github: "https://github.com/Shengaero",
@@ -50,7 +50,7 @@ function externalRedirects(): ReactNodeArray {
 
 export class App extends React.Component {
   componentWillMount() {
-    console.debug('Mounting Application...')
+    console.debug('Mounting Application...');
   }
 
   componentDidCatch(error: Error, info: ErrorInfo) {
@@ -66,12 +66,9 @@ export class App extends React.Component {
     return <div className="app">
       <Helmet defaultTitle="Kaidan Gustave"/>
       <SiteNavBar tooltip={{show: 1000, hide: 0}}/>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Switch>
-          {/* Redirect from no-path to "/home" */}
-          <Redirect exact from="/" to="/home"/>
-
-          <Route exact path="/home" component={HomePage}/>
+          <Route exact path="/" component={HomePage}/>
           {/* TODO <Route path="/projects" component={ProjectsPage}/> */}
           <Route exact path="/error/404" component={NotFoundPage}/>
           <Route exact path="/error/500" component={InternalErrorPage}/>

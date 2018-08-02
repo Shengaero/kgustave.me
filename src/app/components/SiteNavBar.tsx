@@ -79,11 +79,11 @@ export default class SiteNavBar extends Component<SiteNavBarProps, SiteNavBarSta
                toggle={this.toggleTooltip} delay={this.props.tooltip}>
         {this.state.collapsed ? 'Collapse' : 'Expand'}
       </Tooltip>
-      <NavbarBrand href="/home">Kaidan Gustave</NavbarBrand>
+      <NavbarBrand href="/">Kaidan Gustave</NavbarBrand>
       <Collapse navbar isOpen={this.state.collapsed}>
         <Nav navbar className="mr-auto">
           <NavItem>
-            <NavLink href="/home">
+            <NavLink href="/">
               Home <b className="fas fa-home"/>
             </NavLink>
           </NavItem>

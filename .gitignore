@@ -32,4 +32,5 @@
 
 # Exclude some specific definition files
 /src/js/registerServiceWorker.d.ts
-/src/logo/svg.d.ts
+/src/images/svg.d.ts
+/src/docs/md.d.ts

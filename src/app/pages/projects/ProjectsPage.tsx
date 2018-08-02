@@ -18,6 +18,7 @@ import { Component } from 'react'
 import { Redirect, Route, Switch } from 'react-router';
 import KotlinJSONProjectPage from './KotlinJSONProjectPage';
 import Helmet from 'react-helmet';
+import { Page } from '../pages';
 
 export default class ProjectsPage extends Component {
   render() {
@@ -25,12 +26,12 @@ export default class ProjectsPage extends Component {
       {/* Main Projects Page */}
       <Route exact path="/projects">
         {/* TODO Projects page */}
-        <div className="page">
+        <Page>
           <Helmet>
             <title>Projects</title>
             <meta name="og:title" content="Projects"/>
           </Helmet>
-        </div>
+        </Page>
       </Route>
 
       {/* Kotlin JSON Project Page */}

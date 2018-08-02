@@ -15,12 +15,13 @@
  */
 import * as React from 'react';
 import renderJson from '../../util/renderJson';
-import JSONLogo from '../../../logo/json-logo.svg';
-import KotlinLogo from '../../../logo/kotlin-logo.svg';
-import '../../../scss/app.css';
-import '../../../scss/kotlin-json-project.css';
 import CodeBlock from '../../components/CodeBlock';
 import Helmet from 'react-helmet';
+import '../../../scss/kotlin-json-project.css';
+import { Page, PageTitle } from '../pages';
+
+const JSONLogo = require('../../../images/json-logo.svg');
+const KotlinLogo = require('../../../images/kotlin-logo.svg');
 
 function JsonExample({json, indent = 4}: { json: any, indent?: number }) {
   return <CodeBlock language="kotlin" content={renderJson(indent, json)}/>
@@ -43,10 +44,10 @@ const examples = {
 };
 
 export default function KotlinJSONProjectPage() {
-  return <div className="page">
+  return <Page>
     <Helmet>
     </Helmet>
-    <div className="page-title">
+    <PageTitle>
       <header>
         <h1 className="page-name">Kotlin JSON</h1>
         <h1 className="kotlin-json-visual">
@@ -55,11 +56,11 @@ export default function KotlinJSONProjectPage() {
           <img className="json-logo" src={JSONLogo} alt="JSON"/>
         </h1>
       </header>
-    </div>
+    </PageTitle>
     <div>
       <div>
         <JsonExample json={examples.a}/>
       </div>
     </div>
-  </div>;
+  </Page>;
 }

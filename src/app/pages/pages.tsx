@@ -14,18 +14,16 @@
  * limitations under the License.
  */
 import * as React from 'react';
-import '../../scss/app.css';
+import { ReactChild, ReactChildren, ReactElement, ReactNodeArray } from 'react';
 
-type SiteFooterProps = { year: number }
+export type PageProps = {
+  children?: ReactChild | ReactChildren | ReactNodeArray | never[];
+}
 
-export default function SiteFooter(props: SiteFooterProps) {
-  return <div className="site-footer">
-    <footer>
-      <b>
-        <a href="https://github.com/Shengaero/kgustave.me/blob/master/LICENSE">
-          <b className="fas fa-copyright"/> {props.year} Kaidan Gustave
-        </a>
-      </b>
-    </footer>
-  </div>;
+export function PageTitle({ children }: PageProps): ReactElement<any> {
+  return <div className="page-title">{!children ? null : children}</div>;
+}
+
+export function Page({ children }: PageProps): ReactElement<any> {
+  return <div className="page">{!children ? null : children}</div>;
 }

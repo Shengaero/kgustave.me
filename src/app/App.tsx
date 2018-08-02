@@ -22,12 +22,11 @@ import '../js/configureHLJS';
 import SiteFooter from './components/SiteFooter';
 import SiteNavBar from './components/SiteNavBar';
 import HomePage from './pages/HomePage';
-import NotFoundPage from './pages/NotFoundPage';
-import ProjectsPage from './pages/projects/ProjectsPage';
-import {
-  register as registerServiceWorker,
-  unregister as unregisterServiceWorker
-} from '../js/registerServiceWorker';
+import NotFoundPage from './pages/error/NotFoundPage';
+//import ProjectsPage from './pages/projects/ProjectsPage';
+import register, { unregister } from '../js/registerServiceWorker';
+import { ErrorInfo, ReactNodeArray } from 'react';
+import InternalErrorPage from './pages/error/InternalErrorPage';
 
 export const mediaLinks: any = {
   github: "https://github.com/Shengaero",
@@ -37,38 +36,59 @@ export const mediaLinks: any = {
   twitter: "https://twitter.com/Shengaero"
 };
 
-function App() {
-  return <div className="app">
-    <Helmet defaultTitle="Kaidan Gustave"/>
-    <SiteNavBar tooltip={{show: 1000, hide: 0}}/>
-    <BrowserRouter>
-      <Switch>
-        {/* Redirect from no-path to "/home" */}
-        <Redirect exact from="/" to="/home"/>
+const redirectFunction = (key: string) => (): any => {
+  window.location = mediaLinks[key];
+  return null;
+};
 
-        <Route exact path="/home" component={HomePage}/>
-        <Route path="/projects" component={ProjectsPage}/>
-        <Route exact path="/404" component={NotFoundPage}/>
+function externalRedirects(): ReactNodeArray {
+  return Object.keys(mediaLinks).map(key => {
+    // TODO Possible redirecting page?
+    return <Route key={key} exact path={'/' + key} component={redirectFunction(key)}/>
+  });
+}
 
-        {Object.keys(mediaLinks).map((key) => {
-          return <Route key={key} exact path={'/' + key} component={(): any => {
-            window.location = mediaLinks[key];
-            return null;
-          }}/>
-        })}
+export class App extends React.Component {
+  componentWillMount() {
+    console.debug('Mounting Application...')
+  }
 
-        {/* Redirect from unknown route to "/404" */}
-        <Redirect from="/**" to="/404"/>
-      </Switch>
-    </BrowserRouter>
-    <SiteFooter/>
-  </div>;
+  componentDidCatch(error: Error, info: ErrorInfo) {
+    if(error.stack !== undefined) {
+      sessionStorage['error.stack'] = error.stack;
+    }
+
+    // redirect to "/error/500"
+    document.location.assign(document.location.origin + '/error/500');
+  }
+
+  render() {
+    return <div className="app">
+      <Helmet defaultTitle="Kaidan Gustave"/>
+      <SiteNavBar tooltip={{show: 1000, hide: 0}}/>
+      <BrowserRouter>
+        <Switch>
+          {/* Redirect from no-path to "/home" */}
+          <Redirect exact from="/" to="/home"/>
+
+          <Route exact path="/home" component={HomePage}/>
+          {/* TODO <Route path="/projects" component={ProjectsPage}/> */}
+          <Route exact path="/error/404" component={NotFoundPage}/>
+          <Route exact path="/error/500" component={InternalErrorPage}/>
+
+          {externalRedirects()}
+
+          {/* Redirect from unknown route to "/404" */}
+          <Redirect from="/**" to="/error/404"/>
+        </Switch>
+      </BrowserRouter>
+      <SiteFooter year={new Date().getFullYear()}/>
+    </div>;
+  }
 }
 
 export default function launchApp() {
   ReactDOM.render(<App/>, document.getElementById('root'));
-  registerServiceWorker();
-  window.addEventListener('unload', function() {
-    unregisterServiceWorker();
-  });
+  register();
+  window.onunload = unregister;
 }

@@ -17,9 +17,9 @@ import * as React from 'react';
 import { Component } from 'react';
 import {
   Collapse,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
+  // DropdownItem,
+  // DropdownMenu,
+  // DropdownToggle,
   Nav,
   Navbar,
   NavbarBrand,
@@ -27,7 +27,7 @@ import {
   NavItem,
   NavLink,
   Tooltip,
-  UncontrolledDropdown
+  // UncontrolledDropdown
 } from 'reactstrap';
 import '../../scss/app.css';
 
@@ -87,20 +87,23 @@ export default class SiteNavBar extends Component<SiteNavBarProps, SiteNavBarSta
               Home <b className="fas fa-home"/>
             </NavLink>
           </NavItem>
-          <UncontrolledDropdown nav inNavbar>
-            <DropdownToggle nav>
-              Projects <b className="fas fa-paint-brush"/>
-            </DropdownToggle>
-            <DropdownMenu right>
-              <DropdownItem href="/projects">
-                View All Projects
-              </DropdownItem>
-              <div className="dropdown-divider"/>
-              <DropdownItem href="/projects/json">
-                Kotlin JSON
-              </DropdownItem>
-            </DropdownMenu>
-          </UncontrolledDropdown>
+
+          {/* TODO */}
+          {/*<UncontrolledDropdown nav inNavbar>*/}
+            {/*<DropdownToggle nav>*/}
+              {/*Projects <b className="fas fa-paint-brush"/>*/}
+            {/*</DropdownToggle>*/}
+            {/*<DropdownMenu right>*/}
+              {/*<DropdownItem href="/projects">*/}
+                {/*View All Projects*/}
+              {/*</DropdownItem>*/}
+              {/*<div className="dropdown-divider"/>*/}
+              {/*<DropdownItem href="/projects/json">*/}
+                {/*Kotlin JSON*/}
+              {/*</DropdownItem>*/}
+            {/*</DropdownMenu>*/}
+          {/*</UncontrolledDropdown>*/}
+
           <NavItem>
             <NavLink href="https://github.com/Shengaero/">
               GitHub <b className="fab fa-github"/>

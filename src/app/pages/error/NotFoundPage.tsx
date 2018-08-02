@@ -16,20 +16,8 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
+import ErrorPage from './ErrorPage';
 
 export default function NotFoundPage() {
-  return <div className="page">
-    <Helmet>
-      <title>Not Found!</title>
-    </Helmet>
-    <div className="page-title">
-      <header>
-        <h1>Uh Oh!</h1>
-        <b>Looks like there's nothing here!</b>
-        <p>
-          <Link to="/">Go to home page</Link>
-        </p>
-      </header>
-    </div>
-  </div>;
+  return <ErrorPage error="Not Found!" message="Looks like there's nothing here!"/>;
 }

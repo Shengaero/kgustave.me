@@ -18,9 +18,8 @@
     "start": "npm-run-all -p start-css start-ts start-js",
     "test": "jest",
     "eject": "react-scripts eject",
-    "organize-deployment": "npm-run-all build gulp",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "build-deployment": "gulp",
+    "organize-deployment": "npm-run-all build build-deployment"
   },
   "dependencies": {
     "@fortawesome/fontawesome": "^1.1.8",

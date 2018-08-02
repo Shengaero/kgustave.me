@@ -34,3 +34,6 @@
 /src/js/registerServiceWorker.d.ts
 /src/images/svg.d.ts
 /src/docs/md.d.ts
+
+# Ignore actual gh-pages dir
+/shengaero.github.io/

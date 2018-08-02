@@ -17,6 +17,6 @@ indent_style = space
 insert_final_newline = false
 trim_trailing_whitespace = true
 
-[public/CNAME]
+[public/CNAME, .gitmodules]
 insert_final_newline = false
 trim_trailing_whitespace = true

@@ -5,7 +5,7 @@
   "main": "index.js",
   "author": "Kaidan Gustave",
   "license": "Apache-2.0",
-  "homepage": "http://shengaero.github.io/home",
+  "homepage": "http://shengaero.github.io/",
   "private": true,
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
@@ -18,7 +18,7 @@
     "start": "npm-run-all -p start-css start-ts start-js",
     "test": "jest",
     "eject": "react-scripts eject",
-    "organize-deployment": "gulp",
+    "organize-deployment": "npm-run-all build gulp",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },

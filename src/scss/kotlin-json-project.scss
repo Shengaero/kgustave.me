@@ -29,13 +29,13 @@
 
   .kotlin-logo {
     opacity: 1.0;
+    animation: kotlin-logo-fade-in 1.5s;
     @include logo-size;
     @keyframes kotlin-logo-fade-in {
       from {
-        opacity: 0.0
+        opacity: 0.0;
       }
     }
-    animation: kotlin-logo-fade-in 1.5s;
   }
 
   .kotlin-json-visual-text {

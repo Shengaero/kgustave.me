@@ -26,22 +26,25 @@
 @import "theme";
 @import "mixins";
 
+#root {
+  height: 100vh;
+}
+
 /////////
 // APP //
 /////////
 
 .app {
-
+  background-color: background-color();
+  text-align: center;
 }
 
 ////////////
 // NAVBAR //
 ////////////
 
-.navbar-light {
-  .navbar {
-    background-color: primary-color();
-  }
+.navbar {
+  background-color: primary-color();
 
   .navbar-brand {
     font-size: 25px;
@@ -56,6 +59,45 @@
   .navbar-nav .nav-link:focus {
     color: text-color();
   }
+
+  .nav-item {
+    // Project Dropdown Menu
+    .dropdown-menu {
+      @function dropdown-color() {
+        @return darken(primary-color(), 25%)
+      }
+
+      background-color: dropdown-color();
+
+      border: {
+        color: text-color();
+        width: 1.2px;
+      };
+
+      .dropdown-item:hover, .dropdown-item:focus {
+        background-color: darken(dropdown-color(), 10%);
+        animation: dropdown-highlight-fade .5s;
+
+        @keyframes dropdown-highlight-fade {
+          from { background-color: dropdown-color() }
+        }
+      }
+
+      .dropdown-divider {
+        background-color: text-color();
+        border-top: {
+          style: solid;
+          width: 1.1px;
+          color: text-color();
+        };
+        border-bottom: {
+          style: solid;
+          width: 1.1px;
+          color: text-color();
+        };
+      }
+    }
+  }
 }
 
 //////////
@@ -63,11 +105,10 @@
 //////////
 
 .page {
-
 }
 
 .page-title {
-  background-color: lighten(primary-color(), 10%);
+  background-color: secondary-color();
 
   header {
     color: text-color();
@@ -77,13 +118,32 @@
     margin: {
       left: auto;
       right: auto;
-    }
+    };
   }
 
   .page-name {
     @include fade-in(1s);
     font-size: 400%;
   }
+
+  .page-subtitle {
+
+  }
+}
+
+.page-title-without-body {
+  height: 82.5vh;
+  header {
+    height: 100%;
+    padding: {
+      top: 100px;
+      bottom: 35%;
+    };
+  }
+}
+
+.page-body {
+
 }
 
 .code-block {
@@ -91,7 +151,7 @@
   margin: {
     left: 15%;
     right: 40%;
-  }
+  };
 }
 
 .code-block-container {
@@ -107,10 +167,11 @@
   footer {
     a {
       color: text-color('light');
-    }
+      font-weight: bold;
+    };
     padding: {
-      top: 10px;
-      bottom: 30px;
-    }
+      top: 3.5vh;
+      bottom: 3.5vh;
+    };
   }
 }

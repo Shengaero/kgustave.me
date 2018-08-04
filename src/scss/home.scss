@@ -47,14 +47,16 @@
 
 .about-me {
   padding: 50px 20% 20px;
-  border-radius: 5%;
-  border: 2px black;
+
+  h1 {
+    text-align: center;
+    padding: 0.7rem 0;
+    font-size: 40px;
+  }
 
   .about-me-content {
-    padding: 5px;
+    padding: 2px 5px 2rem;
     text-align: left;
-    margin-left: auto;
-    margin-right: auto;
     font-weight: 500;
   }
 }

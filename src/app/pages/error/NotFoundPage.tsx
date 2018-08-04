@@ -14,10 +14,8 @@
  * limitations under the License.
  */
 import * as React from 'react';
-import { Link } from 'react-router-dom';
-import Helmet from 'react-helmet';
-import ErrorPage from './ErrorPage';
+import ErrorPage from './error';
 
-export default function NotFoundPage() {
-  return <ErrorPage error="Not Found!" message="Looks like there's nothing here!"/>;
-}
+export const NotFoundPage = () => <ErrorPage error="Not Found!" message="Looks like there's nothing here!"/>;
+
+export default NotFoundPage;

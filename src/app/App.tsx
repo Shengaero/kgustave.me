@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 import * as React from 'react';
+import { ErrorInfo, ReactNodeArray } from 'react';
 import * as ReactDOM from 'react-dom';
 import { Redirect, Route, Switch } from 'react-router';
 import Helmet from 'react-helmet';
@@ -23,8 +24,7 @@ import SiteNavBar from './components/SiteNavBar';
 import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/error/NotFoundPage';
 //import ProjectsPage from './pages/projects/ProjectsPage';
-import register, { unregister } from '../js/registerServiceWorker';
-import { ErrorInfo, ReactNodeArray } from 'react';
+import register from '../js/registerServiceWorker';
 import InternalErrorPage from './pages/error/InternalErrorPage';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -36,15 +36,15 @@ export const mediaLinks: any = {
   twitter: "https://twitter.com/Shengaero"
 };
 
-const redirectFunction = (key: string) => (): any => {
-  window.location = mediaLinks[key];
+const redirectFunction = (link: string) => (): any => {
+  window.location.href = link;
   return null;
 };
 
 function externalRedirects(): ReactNodeArray {
   return Object.keys(mediaLinks).map(key => {
-    // TODO Possible redirecting page?
-    return <Route key={key} exact path={'/' + key} component={redirectFunction(key)}/>
+    const link = mediaLinks[key];
+    return <Route key={key} exact path={'/' + key} component={redirectFunction(link)}/>;
   });
 }
 
@@ -59,7 +59,7 @@ export class App extends React.Component {
     }
 
     // redirect to "/error/500"
-    document.location.assign(document.location.origin + '/error/500');
+    document.location.pathname = '/error/500';
   }
 
   render() {
@@ -87,5 +87,4 @@ export class App extends React.Component {
 export default function launchApp() {
   ReactDOM.render(<App/>, document.getElementById('root'));
   register();
-  window.onunload = unregister;
 }

@@ -13,23 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import * as React from 'react';
-import * as hljs from 'highlight.js';
-import 'highlight.js/styles/atelier-lakeside-dark.css';
-
-type CodeBlockProps = {
-  language: string;
-  content: string;
-};
-
-export default function CodeBlock({ language, content }: CodeBlockProps) {
-  const detected = hljs.getLanguage(language.toLowerCase());
-  if(detected === undefined) {
-    throw new Error(`Cannot find language with name "${language}"!`)
-  }
-  return <pre className="code-block-container">
-    <code className={"code-block " + language.toLowerCase()}>
-      {content}
-    </code>
-  </pre>;
+// Makes sure a URL string ends with '/'
+export function ensureTrailingSlash(url: string): string {
+  return url.endsWith('/') ? url : url + '/'
 }

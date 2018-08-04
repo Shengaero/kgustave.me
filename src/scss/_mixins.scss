@@ -20,3 +20,10 @@
   }
   animation: fade-in-animation $time;
 }
+
+@mixin background-darken($time, $color, $percent) {
+  @keyframes darken-animation {
+    to { background-color: darken($color, $percent) }
+  }
+  animation: darken-animation $time;
+}

@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 import * as React from 'react';
-import { ReactNode } from 'react';
+import * as ReactMarkdown from 'react-markdown';
 import '../../scss/app.css';
 import '../../scss/home.css';
+import '../../docs/about-me.md';
 import Helmet from 'react-helmet';
 import { Button } from 'reactstrap';
 import { mediaLinks } from '../App';
-import * as ReactMarkdown from 'react-markdown';
-import '../../docs/about-me.md';
-import { Page, PageTitle } from './pages';
+import { ensureTrailingSlash } from '../util/urls';
+import { Page, PageBody, PageName, PageTitle } from './pages';
 
 const aboutMe = require('../../docs/about-me.md');
 
@@ -40,7 +40,7 @@ function MediaButton(props: { color: string | any, href: string, type: string })
 class HomePage extends React.Component<any, { markdown: string | null }> {
   constructor(props: any) {
     super(props);
-    this.componentWillMount = this.componentWillMount.call(this);
+    this.componentWillMount = this.componentWillMount.bind(this);
     this.state = {markdown: null};
   }
 
@@ -54,33 +54,34 @@ class HomePage extends React.Component<any, { markdown: string | null }> {
       .catch(() => console.error(`Failed to fetch ${aboutMe}`));
   }
 
-  render(): ReactNode {
+  render() {
     return <Page>
       <Helmet>
         <title>Kaidan Gustave</title>
         <meta property="og:title" content="Kaidan Gustave"/>
         <meta property="og:description" content="Kotlin and Java developer."/>
-        {/* TODO og:image */}
+        <meta property="og:image"
+              content={ensureTrailingSlash(document.location.origin) + 'images/site-logo.png'}/>
         <meta property="og:url" content={document.location.href}/>
       </Helmet>
 
       <PageTitle>
-        <header>
-          <h1 className="page-name">Kaidan Gustave</h1>
-          <MediaButton color={'#000000'} type="GitHub" href={mediaLinks.github}/>
-          <MediaButton color={'#7289DA'} type="Discord" href={mediaLinks.discord}/>
-          <MediaButton color={'#0077B5'} type="LinkedIn" href={mediaLinks.linkedin}/>
-          <MediaButton color={'#f96854'} type="Patreon" href={mediaLinks.patreon}/>
-          <MediaButton color={'#1da1f2'} type="Twitter" href={mediaLinks.twitter}/>
-        </header>
+        <PageName>Kaidan Gustave</PageName>
+        <MediaButton color={'#000000'} type="GitHub" href={mediaLinks.github}/>
+        <MediaButton color={'#7289DA'} type="Discord" href={mediaLinks.discord}/>
+        <MediaButton color={'#0077B5'} type="LinkedIn" href={mediaLinks.linkedin}/>
+        <MediaButton color={'#f96854'} type="Patreon" href={mediaLinks.patreon}/>
+        <MediaButton color={'#1da1f2'} type="Twitter" href={mediaLinks.twitter}/>
       </PageTitle>
 
-      <div className="about-me">
-        <h1>About Me</h1>
-        <div className="about-me-content">
-          <ReactMarkdown source={this.state.markdown} escapeHtml={false}/>
+      <PageBody>
+        <div className="about-me">
+          <h1>About Me</h1>
+          <div className="about-me-content">
+            <ReactMarkdown source={this.state.markdown} escapeHtml={false}/>
+          </div>
         </div>
-      </div>
+      </PageBody>
     </Page>;
   }
 }

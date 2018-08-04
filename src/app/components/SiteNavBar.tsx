@@ -90,7 +90,7 @@ export default class SiteNavBar extends Component<SiteNavBarProps, SiteNavBarSta
 
           {/* TODO */}
           {/*<UncontrolledDropdown nav inNavbar>*/}
-            {/*<DropdownToggle nav>*/}
+            {/*<DropdownToggle nav caret>*/}
               {/*Projects <b className="fas fa-paint-brush"/>*/}
             {/*</DropdownToggle>*/}
             {/*<DropdownMenu right>*/}
@@ -104,11 +104,6 @@ export default class SiteNavBar extends Component<SiteNavBarProps, SiteNavBarSta
             {/*</DropdownMenu>*/}
           {/*</UncontrolledDropdown>*/}
 
-          <NavItem>
-            <NavLink href="https://github.com/Shengaero/">
-              GitHub <b className="fab fa-github"/>
-            </NavLink>
-          </NavItem>
           <NavItem>
             <NavLink href="mailto:kaidangustave@yahoo.com">
               E-Mail <b className="fas fa-envelope"/>

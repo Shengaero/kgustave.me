@@ -41,19 +41,25 @@ type ErrorPageProps = {
 } & PageProps;
 
 export default function ErrorPage(
-  { error, message, redirectHome = true, children = undefined }: ErrorPageProps
+  {
+    error,
+    message,
+    redirectHome = true,
+    children = undefined
+  }: ErrorPageProps
 ): ReactElement<any> {
   return <Page>
     <Helmet>
       <title>{error}</title>
     </Helmet>
-    <PageTitle>
-      <header>
-        <h1 dangerouslySetInnerHTML={{ __html: generateErrorPageHeader() }}/>
-        <b>{message}</b>
-        {!redirectHome ? null : <p><Link to="/">Go to home page</Link></p>}
-      </header>
+    <PageTitle className="page-title-without-body">
+      <h1 dangerouslySetInnerHTML={{__html: generateErrorPageHeader()}}/>
+      <b>{message}</b>
+      {!redirectHome ? null : [
+        <br key="newline"/>,
+        <Link key="link" to="/">Go to home page</Link>
+      ]}
     </PageTitle>
-    {children}
+    {!children ? null : children}
   </Page>
 }

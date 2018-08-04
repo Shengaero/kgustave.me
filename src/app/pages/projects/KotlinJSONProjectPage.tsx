@@ -18,14 +18,10 @@ import renderJson from '../../util/renderJson';
 import CodeBlock from '../../components/CodeBlock';
 import Helmet from 'react-helmet';
 import '../../../scss/kotlin-json-project.css';
-import { Page, PageTitle } from '../pages';
+import { Page, PageBody, PageName, PageTitle } from '../pages';
 
 const JSONLogo = require('../../../images/json-logo.svg');
 const KotlinLogo = require('../../../images/kotlin-logo.svg');
-
-function JsonExample({json, indent = 4}: { json: any, indent?: number }) {
-  return <CodeBlock language="kotlin" content={renderJson(indent, json)}/>
-}
 
 const examples = {
   a: {
@@ -43,24 +39,28 @@ const examples = {
   }
 };
 
+function JsonExample({json, indent = 4}: { json: any, indent?: number }) {
+  return <CodeBlock language="kotlin" content={renderJson(indent, json)}/>
+}
+
 export default function KotlinJSONProjectPage() {
   return <Page>
     <Helmet>
     </Helmet>
     <PageTitle>
-      <header>
-        <h1 className="page-name">Kotlin JSON</h1>
-        <h1 className="kotlin-json-visual">
-          <img className="kotlin-logo" src={KotlinLogo} alt="Kotlin"/>
-          <b className="kotlin-json-visual-text"> + </b>
-          <img className="json-logo" src={JSONLogo} alt="JSON"/>
-        </h1>
-      </header>
+      <PageName>Kotlin JSON</PageName>
+      <h1 className="kotlin-json-visual">
+        <img className="kotlin-logo" src={KotlinLogo} alt="Kotlin"/>
+        <b className="kotlin-json-visual-text"> + </b>
+        <img className="json-logo" src={JSONLogo} alt="JSON"/>
+      </h1>
     </PageTitle>
-    <div>
+    <PageBody>
       <div>
-        <JsonExample json={examples.a}/>
+        <div>
+          <JsonExample json={examples.a}/>
+        </div>
       </div>
-    </div>
+    </PageBody>
   </Page>;
 }

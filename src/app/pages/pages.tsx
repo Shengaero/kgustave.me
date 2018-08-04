@@ -14,16 +14,39 @@
  * limitations under the License.
  */
 import * as React from 'react';
-import { ReactChild, ReactChildren, ReactElement, ReactNodeArray } from 'react';
+import { ReactChild, ReactChildren, ReactNodeArray } from 'react';
 
-export type PageProps = {
+function mergeClassNames(def: string, provided: string): string {
+  if(def === provided) {
+    return def;
+  }
+  if(!provided.startsWith(' ')) {
+    provided = ' ' + provided;
+  }
+  return def + provided;
+}
+
+export type BasicProps = {
+  className?: string;
   children?: ReactChild | ReactChildren | ReactNodeArray | never[];
-}
+};
 
-export function PageTitle({ children }: PageProps): ReactElement<any> {
-  return <div className="page-title">{!children ? null : children}</div>;
-}
+export type PageProps = {} & BasicProps;
 
-export function Page({ children }: PageProps): ReactElement<any> {
-  return <div className="page">{!children ? null : children}</div>;
-}
+export const Page = ({children, className = 'page'}: BasicProps) => {
+  return <div className={mergeClassNames('page', className)}>{!children ? null : children}</div>;
+};
+
+export const PageTitle = ({children, className = 'page-title'}: BasicProps) => {
+  return <div className={mergeClassNames('page-title', className)}>
+    <header>{!children ? null : children}</header>
+  </div>;
+};
+
+export const PageName = ({children, className = 'page-name'}: BasicProps) => {
+  return <h1 className={mergeClassNames('page-name', className)}>{children}</h1>;
+};
+
+export const PageBody = ({children, className = 'page-body'}: BasicProps) => {
+  return <div className={mergeClassNames('page-body', className)}>{!children ? null : children}</div>;
+};

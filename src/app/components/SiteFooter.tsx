@@ -18,14 +18,12 @@ import '../../scss/app.css';
 
 type SiteFooterProps = { year: number }
 
+const license = 'https://github.com/Shengaero/kgustave.me/blob/master/LICENSE';
+
 export default function SiteFooter(props: SiteFooterProps) {
   return <div className="site-footer">
     <footer>
-      <b>
-        <a href="https://github.com/Shengaero/kgustave.me/blob/master/LICENSE">
-          <b className="fas fa-copyright"/> {props.year} Kaidan Gustave
-        </a>
-      </b>
+      <a href={license}><b className="fas fa-copyright"/> {props.year} Kaidan Gustave</a>
     </footer>
   </div>;
 }

@@ -27,39 +27,35 @@ $fa-font-path: "../../node_modules/@fortawesome/fontawesome-free/webfonts";
 /////////////////////////
 
 $primary-key: "primary";
+$background-key: "background";
 $secondary-key: "secondary";
 $highlight-key: "highlight";
 $light-text-color: "light-text";
 $dark-text-color: "dark-text";
 $theme-colors: (
-        $primary-key: #FFA07A,
-        $secondary-key: #D3743E,
-        $highlight-key: #7898CC,
+        $primary-key: #82DDFF,
+        $background-key: #FCFCFC,
+        $secondary-key: #C1C1C1,
+        $highlight-key: #FFA07A,
         $dark-text-color: #525252,
         $light-text-color: #D0D0D0
 );
 
-@function primary-color() {
-  @return theme-color($primary-key)
-}
 @function theme-color($key) {
   @return map_get($theme-colors, $key);
 }
+@function primary-color() {
+  @return theme-color($primary-key);
+}
+@function background-color() {
+  @return theme-color($background-key);
+}
 @function highlight-color() {
-  @return theme-color($highlight-key)
+  @return theme-color($highlight-key);
 }
 @function secondary-color() {
-  @return theme-color($secondary-key)
+  @return theme-color($secondary-key);
 }
 @function text-color($type: 'dark') {
-  @return theme-color($type + '-text')
-}
-
-:root {
-  background-color: primary-color();
-}
-
-#root {
-  background-color: primary-color();
-  text-align: center;
+  @return theme-color($type + '-text');
 }

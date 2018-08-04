@@ -25,15 +25,15 @@ const deleting = [
   `!${ghPages}/.git/**/*`,
   `!${ghPages}/CNAME`,
   `!${ghPages}/LICENSE`,
-  `!${ghPages}/favicon.ico`,
-  `!${ghPages}/service-worker.js`,
   `!${ghPages}/static`,
   `!${ghPages}/static/media`,
   `!${ghPages}/static/media/**`
 ];
 
-gulp.task('check clean gh-pages', () => del(deleting, { dryRun: true }).then(paths =>
-  console.log('Files and folders that would be deleted:\n', paths.join('\n')))
+gulp.task('check clean gh-pages', () =>
+  del(deleting, { dryRun: true }).then(paths =>
+    console.log('Files and folders that would be deleted:\n', paths.join('\n'))
+  )
 );
 
 gulp.task('clean gh-pages', () => del(deleting));

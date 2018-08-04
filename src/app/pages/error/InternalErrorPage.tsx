@@ -15,7 +15,7 @@
  */
 import * as React from 'react';
 import { Redirect } from 'react-router';
-import ErrorPage from './ErrorPage';
+import ErrorPage from './error';
 
 interface ErrorState {
   stack?: string
